@@ -1,35 +1,40 @@
 body {
   margin: 0;
-  background: #000;
-  color: #fff;
+  background-color: black;
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-family: 'Arial', sans-serif;
+  justify-content: center;
 }
 
-.countdown-container {
+.countdown {
   text-align: center;
 }
 
-#countdown-number {
+#number {
+  font-family: 'Arial Black', sans-serif;
   font-size: 200px;
-  font-weight: bold;
-  animation: pop 1s ease-out;
-  transform-origin: center;
+  color: white;
+  text-shadow: 0 0 30px #fff, 0 0 60px #ff00ff, 0 0 90px #ff00ff;
+  opacity: 0;
+  transform: scale(0);
+  animation: glow-pop 1s ease-in-out forwards;
 }
 
-@keyframes pop {
+@keyframes glow-pop {
   0% {
-    transform: scale(0);
     opacity: 0;
+    transform: scale(0.3);
+    text-shadow: 0 0 0 #000;
   }
-  50% {
-    transform: scale(1.2);
+  30% {
     opacity: 1;
+    transform: scale(1.1);
+    text-shadow: 0 0 30px #fff, 0 0 60px #ff00ff, 0 0 90px #ff00ff;
   }
   100% {
-    transform: scale(1);
+    opacity: 0;
+    transform: scale(0.3);
+    text-shadow: 0 0 0 #000;
   }
 }
