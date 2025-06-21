@@ -1,23 +1,23 @@
-let countdownValue = 5;
-const display = document.getElementById("countdown-number");
+const numberEl = document.getElementById('number');
+let count = 5;
 
-function animateNumber(num) {
-  display.textContent = num;
-  display.classList.remove("pop");
-  void display.offsetWidth; // Force reflow to restart animation
-  display.classList.add("pop");
+function showNumber(n) {
+  numberEl.textContent = n;
+  numberEl.style.animation = 'none';
+  void numberEl.offsetWidth; // reset animation
+  numberEl.style.animation = 'glow-pop 1s ease-in-out forwards';
 }
 
 function startCountdown() {
   const timer = setInterval(() => {
-    animateNumber(countdownValue);
-
-    countdownValue--;
-
-    if (countdownValue < 0) {
+    if (count > 0) {
+      showNumber(count);
+      count--;
+    } else {
       clearInterval(timer);
-      display.textContent = "Let’s Go!";
-      display.style.fontSize = "80px";
+      numberEl.textContent = 'GO!';
+      numberEl.style.fontSize = '100px';
+      numberEl.style.animation = 'glow-pop 1s ease-in-out forwards';
     }
   }, 1000);
 }
